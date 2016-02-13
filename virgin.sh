@@ -7,7 +7,7 @@ tc2=4300
 ping_limit=50000
 
 get_current_tc() {
-uci get qos.wan.upload
+	uci get qos.wan.upload
 }
 
 set_tc() {
