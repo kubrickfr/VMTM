@@ -1,10 +1,18 @@
 #!/bin/ash
 
-tc0=12000
-tc1=6100
-tc2=4300
+# Refer to https://my.virginmedia.com/traffic-management/traffic-management-policy-thresholds.html
+# to find the limits that apply to you
 
-ping_limit=50000
+tc0=12000           #kbps
+tc1=6100            #kbps
+tc2=4300            #kbps
+
+#It's usually not necessary to change these parameters
+week_tc_start=16    #h
+weel_tc_end=23      #h
+weekend_tc_start=11 #h
+weelend_tc_end=23   #h
+ping_limit=50000    #ns
 
 get_current_tc() {
 	uci get qos.wan.upload
@@ -27,12 +35,12 @@ get_ping() {
 
 is_ts_on() {
 	if [ $(date +%u) -lt 6 ]; then
-		if [ $(date +%H) -ge 16 ] && [ $(date +%H) -lt 23 ]; then
+		if [ $(date +%H) -ge $week_tc_start ] && [ $(date +%H) -lt $weel_tc_end ]; then
 			echo 1
 			return
 		fi
 	else
-		if [ $(date +%H) -ge 11 ] && [ $(date +%H) -lt 23 ]; then
+		if [ $(date +%H) -ge $weekend_tc_start ] && [ $(date +%H) -lt $weelend_tc_end ]; then
 			echo 1
 			return
 		fi
