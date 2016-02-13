@@ -1,5 +1,5 @@
 # VMTM
-QOS control script for OpenWRT to beat the side effects of VirginMedia (UK ISP) Traffic-Management-induced buffer bloat
+QOS control script for OpenWRT to beat the side effects of VirginMedia™ (UK ISP) Traffic-Management-induced buffer bloat
 
 **Disclaimer**: *The following statements express my opinion only and come from my observations of how the system reacts. Call it "reverse engineering" if you like, but I have no inside knowledge: it may not reflect how VirginMedia's internal network really works or even their intentions.* This is not supported or endorsed in any way by VirginMedia™.
 
@@ -27,7 +27,7 @@ In a nutshell, if you keep uploading like crazy:
 * Because of that your download rates will suffer greatly
 Good bye online games, VOIP, fast browsing, etc…
 
-## What this script does **not**
+## What this script does **not** do
 
 It does **not** work around any bandwidth limitation
 
