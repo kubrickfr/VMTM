@@ -19,12 +19,13 @@ Despite making endearing statements [like](https://my.virginmedia.com/traffic-ma
 
 The way they implement their traffic management policies indeed leads to a massive drop in the download rate despite, it is true, not limiting the download rate **at all**.
 
-How comes? Well, when they start limiting your upload bandwidth, they also introduce a rather large buffer in which your outgoing packets are going to be queued before eventually being sent, or dropped if you keep saturating your upload bandwidth. A good intention, don’t you think? If don’t see what’s wrong with that, go read about [buffer bloat](http://www.bufferbloat.net/projects/bloat/wiki/Introduction) and come back here when you’re done!
+How comes? Well, in normal time, your ulpload is limited by your modem's uplink sync speed, but when they start "managing" your upload bandwidth on their network (rather than on the modem), they also introduce a rather large buffer in which your outgoing packets are going to be queued before eventually being sent, or dropped if you keep saturating your upload bandwidth. A good intention, don’t you think? If don’t see what’s wrong with that, go read about [buffer bloat](http://www.bufferbloat.net/projects/bloat/wiki/Introduction) and come back here when you’re done!
 
 In a nutshell, if you keep uploading like crazy:
 * Your ping will rise to very long round trip times (as much as a full second)
 * As a result of this “unnatural” latency, your Operating System’s [TCP congestion avoidance algorithm](https://en.wikipedia.org/wiki/TCP_congestion-avoidance_algorithm) will not work correctly
 * Because of that your download rates will suffer greatly
+
 Good bye online games, VOIP, fast browsing, etc…
 
 ## What this script does **not** do
@@ -34,6 +35,7 @@ It does **not** work around any bandwidth limitation
 ## What this script does
 
 **If** you use your (rather pathetic) SuperHub as a modem only (and it is actually a perfectly fine piece of hardware when used in this configuration) and use a router running [OpenWRT](https://openwrt.org/), then you can use this script to:
+
 1. Detect when VirginMedia applies traffic management measures to your line by measuring the RTT to your gateway
 2. When traffic management is detected, do the bandwidth limitation ourselves with OpenWRT’s QOS module.
 
