@@ -25,7 +25,7 @@ set_tc() {
 }
 
 get_ping() {
-	gateway=$(ip route 2>/dev/null | grep default | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}")
+	gateway=$(ip route 2>/dev/null | grep default | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}" | head -n 1)
 	if [ "$gateway" == "" ]; then
 		#Fallback on the route command
 		gateway=$(route -n | grep -E '^0\.0\.0\.0' | cut  -f 10 -d ' ')
