@@ -35,12 +35,12 @@ get_ping() {
 
 is_ts_on() {
 	if [ $(date +%u) -lt 6 ]; then
-		if [ $(date +%H) -ge $week_tc_start ] && [ $(date +%H) -lt $weel_tc_end ]; then
+		if [ $(date +%H) -ge $week_tc_start ] && [ $(date +%H) -le $weel_tc_end ]; then
 			echo 1
 			return
 		fi
 	else
-		if [ $(date +%H) -ge $weekend_tc_start ] && [ $(date +%H) -lt $weelend_tc_end ]; then
+		if [ $(date +%H) -ge $weekend_tc_start ] && [ $(date +%H) -le $weelend_tc_end ]; then
 			echo 1
 			return
 		fi
