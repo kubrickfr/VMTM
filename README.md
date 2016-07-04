@@ -41,6 +41,19 @@ It does **not** work around any bandwidth limitation
 
 The effect is that your upload bandwidth will essentially stay the same but outgoing packets in excess of the available upload bandwidth will almost instantly be dropped, resulting in your Operating System’s TCP congestion avoidance algorithm working correctly and miraculously faster download speeds.
 
+### For example:
+
+Uploading large files for hours, 9 simultaneous streams, test made at around 8PM on a Monday:
+
+Without VMTM:
+
+![Alt text](/img/noVMTM.png?raw=true "")
+
+With VMTM:
+
+![Alt text](/img/VMTM.png?raw=true "")
+
+
 ## How to use it?
 
 Once OpenWRT is working correctly and QOS support is installed and enabled, simply copy the virgin.sh script in your router’s /root/ directory or anywhere else you like, edit the first 3 variables to suit [your needs](https://my.virginmedia.com/traffic-management/traffic-management-policy-thresholds.html) and then create a crontab entry to run the script every 5 minues, all the time. Mine looks like this:
